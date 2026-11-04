@@ -1,0 +1,56 @@
+using BlaisePascal.SmartHouse.Domain.Abstraction;
+using BlaisePascal.SmartHouse.Domain.ValueObjects;
+
+namespace BlaisePascal.SmartHouse.Domain.Food
+{
+    public class Refrigerator : Device
+    {
+        public Fridge MyFridge { get; private set; }
+        public Freezer MyFreezer { get; private set; }
+        public Refrigerator(Fridge fridge, string name, Freezer myFreezer) : base(name, true)
+        {
+            MyFridge = fridge;
+            MyFreezer = myFreezer;
+        }
+
+        public void OpenFridge()
+        {
+            MyFridge.ToggleOn();
+        }
+
+        public void CloseFridge()
+        {
+            MyFridge.ToggleOff();
+        }
+
+        public void SetMyFridgeTemp(Temperature targetTemp)
+        {
+            MyFridge.SetFridgeTemperature(targetTemp);
+        }
+
+        public string ReturnFridgeInformation()
+        {
+            return MyFridge.ToString();
+        }
+
+        public void OpenFreezer()
+        {
+            MyFreezer.ToggleOn();
+        }
+
+        public void CloseFreezer()
+        {
+            MyFreezer.ToggleOff();
+        }
+
+        public void SetMyFreezerTemp(Temperature targetTemp)
+        {
+            MyFreezer.SetFreezerTemperature(targetTemp);
+        }
+
+        public string ReturnFreezerInformation()
+        {
+            return MyFreezer.ToString();
+        }
+    }
+}
